@@ -1,0 +1,134 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
+          enum: [USER, ADMIN]
+      example:
+        id: 65e93c968369c76ba8979c35
+        username: admin
+        role: USER
+
+    Game:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          type: [string]
+          enum: ['featured', 'popular', 'game-credits', 'gift-cards', 'games', 'services', 'newly-added', 'direct-top-up']
+        genre:
+          type: [string]
+          enum:
+            [
+              'others',
+              'action',
+              'adventure',
+              'casual',
+              'mmo',
+              'moba',
+              'rpg',
+              'shooter',
+              'simulation',
+              'social',
+              'sports',
+              'strategy',
+            ]
+        platform:
+          type: [string]
+          enum: ['desktop', 'mobile', 'console']
+        thumbnail:
+          type: string
+      example:
+        id: 65e93c968369c76ba8979c39
+        name: World of Warships (SEA)
+        category: ['games']
+        genre: ['mmo', 'shooter']
+        platform: ['desktop', 'mobile']
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+        expires:
+          type: string
+          format: date-time
+      example:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWU5M2Q5ZWIyZTA2NTUxYjcyZGZmMTMiLCJpYXQiOjE3MDk3ODQ1MzcsImV4cCI6MTcwOTc4ODEzNywidHlwZSI6IkFDQ0VTUyJ9.093Ai6q_SF-VDfMTBKwAtnKiwlOG2M-yr2IBcCTnCn8
+        expires: 2024-03-07T05:08:57.886Z
+
+    AuthTokens:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/Token'
+        refresh:
+          $ref: '#/components/schemas/Token'
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    DuplicateUsername:
+      description: Username already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Username already taken
+    DuplicateGameName:
+      description: Game name already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Game name already taken
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 401
+            message: Please authenticate
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 403
+            message: Forbidden
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
