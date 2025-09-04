@@ -1,8 +1,6 @@
-# RAZER ASSESSMENT API
+# Overview
 
-A project for Razer technical assessment.
-
-This project provide APIs that manage users and games of a company.
+This project provide APIs that manage users and games of a company. (this is small project like a technical assessment)
 
 ## Prerequisites
 
@@ -12,13 +10,6 @@ This project provide APIs that manage users and games of a company.
 ## Installation
 
 Follow these step to install and run this application locally:
-
-Clone the repo:
-
-```bash
-git clone --depth 1 https://github.com/vuongthanh148/razer_assessment.git
-cd razer_assessment
-```
 
 Install the dependencies:
 
@@ -135,11 +126,11 @@ The environment variables can be found and modified in the `.env` file. They com
 PORT=3000
 NODE_ENV=PROD
 # URL of the Mongo DB
-MONGODB_URL=mongodb://127.0.0.1:27017/razer_assessment
+MONGODB_URL=mongodb://127.0.0.1:27017/assessment
 BASE_NAME=/api/v1
 # JWT
 # JWT secret key
-JWT_SECRET=razersecret
+JWT_SECRET=assessmentsecret
 # Number of minutes after which an access token expires
 JWT_ACCESS_EXPIRATION_MINUTES=60
 # Number of days after which a refresh token expires
