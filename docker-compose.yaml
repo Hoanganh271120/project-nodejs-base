@@ -1,19 +1,19 @@
-version: '3'
+
 
 services:
-  razer-assessment:
+  assessment:
     build: .
-    image: razer-assessment
+    image: assessment
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/razer-assessment
+      - MONGODB_URL=mongodb://mongodb:27017/assessment
     ports:
       - '3000:3000'
     depends_on:
       - mongodb
     volumes:
-      - .:/usr/src/razer-assessment
+      - .:/usr/src/assessment
     networks:
-      - razer-network
+      - assessment-network
 
   mongodb:
     image: mongo:4.2.1-bionic
@@ -22,11 +22,11 @@ services:
     volumes:
       - dbdata:/data/db
     networks:
-      - razer-network
+      - assessment-network
 
 volumes:
   dbdata:
 
 networks:
-  razer-network:
+  assessment-network:
     driver: bridge

@@ -1,8 +1,8 @@
 {
-  "name": "razer-assessment",
+  "name": "assessment",
   "type": "module",
   "version": "1.0.0",
-  "description": "This application is for Razer assessment",
+  "description": "This application is for assessment",
   "main": "src/app.js",
   "engines": {
     "node": ">=18"
@@ -17,16 +17,7 @@
     "seed:run": "node ./seeder/seed",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuongthanh148/razer_assessment.git"
-  },
-  "author": "Stephen",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vuongthanh148/razer_assessment/issues"
-  },
-  "homepage": "https://github.com/vuongthanh148/razer_assessment#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
