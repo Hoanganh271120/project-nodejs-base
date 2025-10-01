@@ -6,7 +6,7 @@ WORKDIR /usr/src/node-app
 
 COPY package.json package-lock.json ./
 
-RUN npm install --pure-lockfile
+RUN npm ci
 
 COPY --chown=node:node . .
 
