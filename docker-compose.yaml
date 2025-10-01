@@ -2,16 +2,21 @@
 
 services:
   assessment:
-    build: .
-    image: assessment
+    image: ${IMAGE_URI}
     environment:
+      - PORT=3000
+      - NODE_ENV=PROD
       - MONGODB_URL=mongodb://mongodb:27017/assessment
+      - BASE_NAME=/api/v1
+      - JWT_SECRET=assessmentsecret
+      - JWT_ACCESS_EXPIRATION_MINUTES=60
+      - JWT_REFRESH_EXPIRATION_DAYS=30
     ports:
       - '3000:3000'
     depends_on:
       - mongodb
     volumes:
-      - .:/usr/src/assessment
+      - .:/usr/src/node-app
     networks:
       - assessment-network
 
