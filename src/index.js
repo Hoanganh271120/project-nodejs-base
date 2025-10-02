@@ -3,6 +3,7 @@ import { app } from './app.js';
 import { GlobalConfig } from './shared/config/globalConfig.js';
 import { logger } from './shared/config/logger.js';
 
+logger.info('Deploy successfully');
 let server;
 mongoose
   .connect(GlobalConfig.mongoose.url, GlobalConfig.mongoose.options)

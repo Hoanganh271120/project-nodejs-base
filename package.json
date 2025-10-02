@@ -15,7 +15,8 @@
     "prettier:fix": "prettier --write **/*.js",
     "docker:run": "docker-compose -f docker-compose.yaml up -d",
     "seed:run": "node ./seeder/seed",
-    "prepare": "husky"
+  "prepare": "husky",
+  "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "license": "ISC",
   "dependencies": {
