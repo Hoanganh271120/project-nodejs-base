@@ -1,4 +1,3 @@
-
 import { jest } from '@jest/globals';
 import gameService from './game.service.js';
 import { Game } from '../models/game.model.js';
@@ -21,8 +20,7 @@ describe('Game Service', () => {
   describe('createGame', () => {
     it('should throw error if game name is taken', async () => {
       Game.isGameNameTaken.mockResolvedValue(true);
-      await expect(gameService.createGame({ username: 'test' }))
-        .rejects.toThrow(CustomError);
+      await expect(gameService.createGame({ username: 'test' })).rejects.toThrow(CustomError);
     });
 
     it('should create and return game if name is not taken', async () => {
@@ -67,7 +65,6 @@ describe('Game Service', () => {
       Game.isGameNameTaken.mockResolvedValue(true);
       await expect(gameService.updateGame('id', { name: 'new' })).rejects.toThrow(CustomError);
     });
-
   });
 
   describe('deleteGame', () => {
